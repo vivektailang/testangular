@@ -28,13 +28,23 @@ import { Subscription } from 'rxjs';
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/home" fragment="products">
-                <i class="bi bi-box-seam"></i> Products
+              <a class="nav-link" routerLink="/home" fragment="mission">
+                <i class="bi bi-flag-fill"></i> Mission
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="/about" routerLinkActive="active">
-                <i class="bi bi-info-circle"></i> About Us
+              <a class="nav-link" routerLink="/home" fragment="partnership">
+                <i class="bi bi-handshake-fill"></i> Partnership
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home" fragment="why-us">
+                <i class="bi bi-star-fill"></i> Why Choose Us
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/home" fragment="products">
+                <i class="bi bi-box-seam"></i> Products
               </a>
             </li>
             <li class="nav-item">
