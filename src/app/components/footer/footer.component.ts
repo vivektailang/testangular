@@ -68,7 +68,7 @@ import { CommonModule } from '@angular/common';
               </li>
               <li class="mb-3">
                 <i class="bi bi-telephone-fill me-2" style="color: #0dcaf0;"></i>
-                +91 98765 43210
+                +91 79748 83320
               </li>
             </ul>
           </div>
