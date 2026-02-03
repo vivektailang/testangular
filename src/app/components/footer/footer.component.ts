@@ -17,10 +17,9 @@ import { CommonModule } from '@angular/common';
               Official Channel Partner of Konica Minolta.
             </p>
             <div class="social-links mt-4">
-              <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
-              <a href="#" class="text-white me-3"><i class="bi bi-twitter fs-5"></i></a>
-              <a href="#" class="text-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
-              <a href="#" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
+              <a href="https://www.facebook.com/share/1AZ1N89nsT/" target="_blank" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+              <a href="https://www.linkedin.com/company/mediimagehealthcare" target="_blank" class="text-white me-3"><i class="bi bi-linkedin fs-5"></i></a>
+              <a href="https://www.instagram.com/mediimagehealthcare?igsh=ZWVpOGV4bGplajdw" target="_blank" class="text-white"><i class="bi bi-instagram fs-5"></i></a>
             </div>
           </div>
           
