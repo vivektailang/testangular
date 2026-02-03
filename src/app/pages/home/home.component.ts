@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { AuthService } from '../../services/auth.service';
 import { Product } from '../../models/product.model';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-home',
@@ -426,86 +427,14 @@ import { Product } from '../../models/product.model';
   `]
 })
 export class HomeComponent implements OnInit {
-  products: Product[] = [
-    {
-      id: 1,
-      name: 'Digital X-ray (DR)',
-      description: 'Modern digital radiography system for high-quality imaging',
-      price: 450000,
-      category: 'Imaging Equipment',
-      icon: 'bi-radioactive'
-    },
-    {
-      id: 2,
-      name: 'Computerised X-ray (CR)',
-      description: 'Computed radiography system for efficient diagnosis',
-      price: 350000,
-      category: 'Imaging Equipment',
-      icon: 'bi-memory'
-    },
-    {
-      id: 3,
-      name: 'X-ray Machine',
-      description: 'Portable and fixed X-ray machine for clinical use',
-      price: 250000,
-      category: 'Imaging Equipment',
-      icon: 'bi-lightning'
-    },
-    {
-      id: 4,
-      name: 'C-Arm',
-      description: 'Mobile fluoroscopy C-arm for surgical imaging',
-      price: 650000,
-      category: 'Surgical Equipment',
-      icon: 'bi-disc'
-    },
-    {
-      id: 5,
-      name: 'Pressure Injector',
-      description: 'High-pressure injection system for contrast media',
-      price: 85000,
-      category: 'Diagnostic Equipment',
-      icon: 'bi-droplet-fill'
-    },
-    {
-      id: 6,
-      name: 'Ultrasound Machine',
-      description: 'Portable ultrasound imaging system for various applications',
-      price: 200000,
-      category: 'Imaging Equipment',
-      icon: 'bi-soundwave'
-    },
-    {
-      id: 7,
-      name: 'CT Scanner',
-      description: 'Multi-slice CT scanner for advanced imaging',
-      price: 1500000,
-      category: 'Advanced Imaging',
-      icon: 'bi-cube'
-    },
-    {
-      id: 8,
-      name: 'MRI Machine',
-      description: 'Magnetic resonance imaging system for detailed diagnostics',
-      price: 2000000,
-      category: 'Advanced Imaging',
-      icon: 'bi-square-fill'
-    },
-    {
-      id: 9,
-      name: 'X-Ray Films',
-      description: 'High-quality X-ray films for medical imaging',
-      price: 1500,
-      category: 'Consumables',
-      icon: 'bi-film'
-    }
-  ];
+  products: Product[] = [];
 
   isLoggedIn: boolean = false;
 
   constructor(
     private cartService: CartService,
     private authService: AuthService,
+    private productService: ProductService,
     private router: Router
   ) { }
 
@@ -516,6 +445,16 @@ export class HomeComponent implements OnInit {
     this.authService.getLoginStatusObservable().subscribe(
       (isLoggedIn: boolean) => {
         this.isLoggedIn = isLoggedIn;
+      }
+    );
+
+    // Fetch products from JSON
+    this.productService.getProducts().subscribe(
+      (data) => {
+        this.products = data;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
       }
     );
   }
