@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { RouterLink, RouterLinkActive, Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { CartService } from '../../services/cart.service';
@@ -165,6 +165,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cartItemCount: number = 0;
   private subscription: Subscription | null = null;
   private cartSubscription: Subscription | null = null;
+  private routerSubscription: Subscription | null = null;
 
   constructor(
     private authService: AuthService,
@@ -193,6 +194,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.cartSubscription = this.cartService.getCartItems().subscribe(items => {
       this.cartItemCount = items.reduce((count, item) => count + item.quantity, 0);
     });
+
+    // Scroll to top on route change (if no fragment)
+    this.routerSubscription = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        const tree = this.router.parseUrl(event.url);
+        if (!tree.fragment) {
+          window.scrollTo(0, 0);
+        }
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -201,6 +212,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
     if (this.cartSubscription) {
       this.cartSubscription.unsubscribe();
+    }
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
     }
   }
 
