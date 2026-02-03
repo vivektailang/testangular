@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [RouterLink, RouterLinkActive, CommonModule],
   template: `
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #000000;">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
       <div class="container-fluid">
         <a class="navbar-brand fw-bold" routerLink="/home" style="cursor: pointer;">
           <img src="assets/img/header_logo.jpeg" alt="MEDiiMAGE Logo" style="height: 40px;">
@@ -97,6 +97,12 @@ import { Subscription } from 'rxjs';
     </nav>
   `,
   styles: [`
+    :host {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      display: block;
+    }
     .navbar-brand {
       font-size: 1.5rem;
     }
