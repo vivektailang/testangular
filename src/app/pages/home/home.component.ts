@@ -70,7 +70,7 @@ import { Product } from '../../models/product.model';
           <div class="col-md-6">
             <div class="leadership-card">
               <div class="leader-image">
-                <img src="/assets/img/founder.jpeg" alt="Brajesh Chaudhary" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
+                <img src="assets/img/founder.jpeg" alt="Brajesh Chaudhary" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover;">
               </div>
               <h4 style="color: #001f3f;" class="mt-3">Brajesh Chaudhary</h4>
               <p class="text-muted">Founder</p>
