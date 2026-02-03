@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { Router, RouterLink, ActivatedRoute } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { AuthService } from '../../services/auth.service';
 import { Product } from '../../models/product.model';
@@ -12,7 +12,7 @@ import { ProductService } from '../../services/product.service';
   imports: [CommonModule, RouterLink],
   template: `
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
       <div class="container text-center text-white d-flex align-items-center justify-content-center min-vh-50">
         <div class="hero-content">
           <h1 class="display-3 fw-bold mb-4">
@@ -32,7 +32,7 @@ import { ProductService } from '../../services/product.service';
     </section>
 
     <!-- Mission Section -->
-    <section class="mission-section py-5" #missionSection>
+    <section class="mission-section py-5" #missionSection id="mission">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-12">
@@ -60,7 +60,7 @@ import { ProductService } from '../../services/product.service';
     </section>
 
     <!-- Leadership Section -->
-    <section class="leadership-section py-5">
+    <section class="leadership-section py-5" id="leadership">
       <div class="container">
         <h2 class="text-center mb-5" style="color: #001f3f;">
           <i class="bi bi-people-fill"></i> Meet Our Leadership
@@ -90,7 +90,7 @@ import { ProductService } from '../../services/product.service';
     </section>
 
     <!-- Partnership Section -->
-    <section class="partnership-section py-5">
+    <section class="partnership-section py-5" id="partnership">
       <div class="container">
         <h2 class="text-center mb-5" style="color: #001f3f;">
           <i class="bi bi-handshake"></i> Our Partnership
@@ -130,7 +130,7 @@ import { ProductService } from '../../services/product.service';
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="why-choose-us py-5">
+    <section class="why-choose-us py-5" id="why-us">
       <div class="container">
         <h2 class="text-center mb-5" style="color: #001f3f;">
           <i class="bi bi-star-fill"></i> Why Choose Us?
@@ -179,7 +179,7 @@ import { ProductService } from '../../services/product.service';
     </section>
 
     <!-- Products Section -->
-    <section class="products-section py-5">
+    <section class="products-section py-5" id="products">
       <div class="container">
         <h2 class="text-center mb-5" style="color: #001f3f;">
           <i class="bi bi-capsule"></i> Our Healthcare Products
@@ -435,7 +435,8 @@ export class HomeComponent implements OnInit {
     private cartService: CartService,
     private authService: AuthService,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -457,6 +458,14 @@ export class HomeComponent implements OnInit {
         console.error('Error fetching products:', error);
       }
     );
+
+    // Handle scrolling to fragments (sections)
+    this.route.fragment.subscribe(fragment => {
+      if (fragment) {
+        // Small delay to ensure DOM is ready
+        setTimeout(() => document.getElementById(fragment)?.scrollIntoView({ behavior: 'smooth' }), 100);
+      }
+    });
   }
 
   addToCart(product: Product): void {
