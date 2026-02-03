@@ -100,7 +100,7 @@ import { CommonModule } from '@angular/common';
         <div class="row g-4 justify-content-center">
           <div class="col-md-8 col-lg-6">
             <div class="card border-0 shadow h-100 text-center p-5">
-              <img src="/assets/img/founder.jpeg" alt="Brajesh Chaudhary" 
+              <img src="assets/img/founder.jpeg" alt="Brajesh Chaudhary" 
                    class="rounded-circle mx-auto mb-4" width="250" height="250" style="object-fit: cover;">
               <h4 style="color: #001f3f;" class="fw-bold mb-2">Brajesh Chaudhary</h4>
               <p class="text-muted mb-4 fs-5">Founder & Director</p>
